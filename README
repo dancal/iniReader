@@ -1,0 +1,10 @@
+This is a simple C++ class that will parse a configuration file in a key = value format and return the value of the requested key.
+
+Example Use:
+
+parseIniFile("sample.ini");
+cout << getOption("mysql_host") << "\n"; //Return string
+cout << getOption("mysql_user") << "\n"; //Return string
+cout << getOption("mysql_pass") << "\n"; //Return string
+cout << getOptionChar("mysql_db") << "\n"; //Return char
+cout << getOptionChar("mysql_socket") << "\n"; //Return char
