@@ -41,21 +41,32 @@ void parseIniFile(char *fileName)
 			continue;
 		}
 
-		key = getOptionName(optionValue);
+		key = parseOptionName(optionValue);
 
 		if (key.length() > 0)
 		{
 			iniItem[i] = new ConfigItems;
 			iniItem[i]->key = key;
-			iniItem[i]->value = getOptionValue(optionValue);
+			iniItem[i]->value = parseOptionValue(optionValue);
 			i++;
 		}
 	}
 
+	i--;
 	infile.close();
 }
 
-std::string getOption(std::string key)
+void cleanupResults()
+{
+	for (int x = 0; x <= i; x++)
+	{
+		delete iniItem[x];
+	}
+
+	i = 0;
+}
+
+std::string getOptionToString(std::string key)
 {
 	//Check to see if anything got parsed?
 	if (i == 0)
@@ -63,22 +74,18 @@ std::string getOption(std::string key)
 		return "";
 	}
 
-	int count = 0;
-
-	while (iniItem != NULL)
+	for (int x = 0; x <= i; x++)
 	{
-		if (key == iniItem[count]->key)
+		if (key == iniItem[x]->key)
 		{
-			return iniItem[count]->value;
+			return iniItem[x]->value;
 		}
-
-		count++;
 	}
-
+	
 	return "";
 }
 
-const char *getOptionChar(std::string key)
+const char *getOptionToChar(std::string key)
 {
 	//Check to see if anything got parsed?
 	if (i == 0)
@@ -86,22 +93,37 @@ const char *getOptionChar(std::string key)
 		return "";
 	}
 
-	int count = 0;
-
-	while (iniItem != NULL)
+	for (int x = 0; x <= i; x++)
 	{
-		if (key == iniItem[count]->key)
+		if (key == iniItem[x]->key)
 		{
-			return iniItem[count]->value.c_str();
+			return iniItem[x]->value.c_str();
 		}
-
-		count++;
 	}
 
 	return "";
 }
 
-std::string getOptionName(std::string value)
+int getOptionToInt(std::string key)
+{
+	//Check to see if anything got parsed?
+	if (i == 0)
+	{
+		return 0;
+	}
+
+	for (int x = 0; x <= i; x++)
+	{
+		if (key == iniItem[x]->key)
+		{
+			return atoi(iniItem[x]->value.c_str());
+		}
+	}
+
+	return 0;
+}
+
+std::string parseOptionName(std::string value)
 {
 	size_t found;
 
@@ -118,7 +140,7 @@ std::string getOptionName(std::string value)
 	return key;
 }
 
-std::string getOptionValue(std::string value)
+std::string parseOptionValue(std::string value)
 {
 	size_t found;
 

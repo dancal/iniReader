@@ -16,11 +16,17 @@ using namespace std;
 
 int main(int argc, char** argv) {
 	parseIniFile("sample.ini");
-	cout << getOption("mysql_host") << "\n"; //Return string
-	cout << getOption("mysql_user") << "\n"; //Return string
-	cout << getOption("mysql_pass") << "\n"; //Return string
-	cout << getOptionChar("mysql_db") << "\n"; //Return char
-	cout << getOptionChar("mysql_socket") << "\n"; //Return char
+	cout << "MYSQL Host: " << getOptionToString("mysql_host") << "\n"; //Return string
+	cout << "MYSQL User: " << getOptionToString("mysql_user") << "\n"; //Return string
+	cout << "MYSQL Pass: " << getOptionToString("mysql_pass") << "\n"; //Return string
+	cout << "MYSQL DB: " << getOptionToChar("mysql_db") << "\n"; //Return char
+	cout << "MYSQL Socket: " << getOptionToChar("mysql_socket") << "\n"; //Return char
+	cout << "MYSQL Port: " << getOptionToInt("mysql_port") << "\n"; //Return int
+	cout << "Bad Config Item: " << getOptionToString("bad_config_item") << "\n"; //Should return nothing
+
+	cleanupResults();
+	cout << "MYSQL Host (After clean): " << getOptionToString("mysql_host") << "\n"; //Should return nothing as the config items have been cleaned
+
 	return 0;
 }
 

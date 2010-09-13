@@ -11,11 +11,48 @@
 #include <string>
 #include <fstream>
 
+/**
+ * Parse a configuration file
+ * 
+ * @param	fileName The name of the file to parse
+ * @return	none
+ */
 void parseIniFile(char *fileName);
-std::string getOption(std::string key);
-const char *getOptionChar(std::string key);
-std::string getOptionName(std::string value);
-std::string getOptionValue(std::string value);
+
+/**
+ * If you are finished with the config item, use this function to cleanup the results
+ * 
+ * @return none
+ */
+void cleanupResults();
+
+/**
+ * Return the value of the requested key in with the string type
+ *
+ * @param	key The option key
+ * @return	string The value of the requested key
+ */
+std::string getOptionToString(std::string key);
+
+/**
+ * Return the value of the requested key in with the int type
+ *
+ * @param	key The option key
+ * @return	int The value of the requested key
+ * @note	If item is not an integer (or does not exist) then 0 will be returned.
+ */
+int getOptionToInt(std::string key);
+
+/**
+ * Return the value of the requested key in with the char type
+ *
+ * @param    key The option key
+ * @return   char The value of the requested key
+ */
+const char *getOptionToChar(std::string key);
+
+std::string parseOptionName(std::string value);
+std::string parseOptionValue(std::string value);
 std::string trim(std::string s);
 std::string rtrim(std::string s);
 std::string ltrim(std::string s);
