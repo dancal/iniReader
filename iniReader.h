@@ -24,7 +24,7 @@ void parseIniFile(char *fileName);
  * 
  * @return none
  */
-void cleanupResults();
+void cleanupIniReader();
 
 /**
  * Return the value of the requested key in with the string type

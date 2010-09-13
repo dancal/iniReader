@@ -56,7 +56,7 @@ void parseIniFile(char *fileName)
 	infile.close();
 }
 
-void cleanupResults()
+void cleanupIniReader()
 {
 	for (int x = 0; x <= i; x++)
 	{

@@ -24,7 +24,7 @@ int main(int argc, char** argv) {
 	cout << "MYSQL Port: " << getOptionToInt("mysql_port") << "\n"; //Return int
 	cout << "Bad Config Item: " << getOptionToString("bad_config_item") << "\n"; //Should return nothing
 
-	cleanupResults();
+	cleanupIniReader();
 	cout << "MYSQL Host (After clean): " << getOptionToString("mysql_host") << "\n"; //Should return nothing as the config items have been cleaned
 
 	return 0;
