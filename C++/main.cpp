@@ -10,7 +10,7 @@
 #include <stdlib.h>
 #include <string>
 #include <fstream>
-#include "iniReader.h"
+#include <iniReader.h>
 
 using namespace std;
 

@@ -1,2 +1,7 @@
 nbproject
 Makefile
+.dep.inc
+/C++/build/Debug/
+/C++/dist/Debug/
+/C/build/Debug/
+/C/dist/Debug/
